@@ -1070,9 +1070,11 @@ function parseWireguardUrl(url) {
                 .map((a) => a.trim())
                 .filter(Boolean);
 
+            const ipv4 = addresses.find((a) => !a.includes(':'));
             const ipv6 = addresses.find((a) => a.includes(':'));
 
-            if (addresses.length > 0) proxy.ip = addresses;
+            // if (addresses.length > 0) proxy.ip = addresses;
+            if (ipv4.length > 0) proxy.ip = ipv4;
             if (ipv6) proxy.ipv6 = ipv6;
         }
 
